@@ -22,7 +22,7 @@ int main(void)
 
     while (1) 
     {
-		float ADC_voltage_val = ADC_read_voltage(1, 5);
+		float ADC_voltage_val = ADC_read_voltage(0, 5);
 		
 		if(ADC_voltage_val < 1.5){
 			GPIO_high(&LED0_PORT, LED0_PIN);
