@@ -15,7 +15,7 @@ void UART_Init(uint32_t baud_rate){
 
 void UART_TransmitByte(uint8_t data){
 	while (!(UCSR0A & (1<<UDRE0)));
-	
+	 
 	UDR0 = data;
 }
 
