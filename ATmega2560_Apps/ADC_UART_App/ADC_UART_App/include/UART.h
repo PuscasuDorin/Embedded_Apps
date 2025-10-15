@@ -4,6 +4,12 @@
 
 #define F_CPU 16000000UL
 
+#include <stdbool.h>
+
+extern volatile char rx_buffer[20];
+extern volatile uint8_t rx_buffer_index;
+extern volatile bool str_is_complete ;
+
 void UART_Init(uint32_t baud_rate);
 
 void UART_TransmitByte(uint8_t data);
