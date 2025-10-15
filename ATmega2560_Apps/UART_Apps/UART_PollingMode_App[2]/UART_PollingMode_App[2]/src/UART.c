@@ -10,7 +10,7 @@ void UART_Init(uint32_t baud_rate){
 	
 	UCSR0B = (1<<RXEN0) | (1<<TXEN0);
 
-	UCSR0C = (1<<UCSZ02) | (1<<UCSZ11) | (1<<UCSZ10);
+	UCSR0C = (1<<UCSZ01) | (1<<UCSZ00);
 }
 
 void UART_TransmitByte(uint8_t data){
