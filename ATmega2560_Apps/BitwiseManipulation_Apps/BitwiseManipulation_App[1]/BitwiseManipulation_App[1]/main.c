@@ -1,5 +1,5 @@
 /*
- * BitwiseManipulation_App[1].cpp
+ * BitwiseManipulation_App[1].c
  *
  * Created: 8/26/2025 10:50:55 AM
  * Author : Puscasu Dorin-Vasile
