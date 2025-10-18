@@ -12,42 +12,46 @@
 
 int main(void)
 {
-    DDRG = (1<<PG5);
+    DDRG = (1<<PG5); //led 0
+	DDRE = (1<<PE3); //led 1
 	PWM_init();
+	uint8_t value0 = 0x00;
+	uint8_t value1 = 0x80;
+	uint8_t dir = 1;
     while (1) 
     {
-		LED_brightness(0);
-		_delay_ms(500);
-		LED_brightness(10);
-		_delay_ms(500);
-		LED_brightness(20);
-		_delay_ms(500);
-		LED_brightness(30);
-		_delay_ms(500);
-		LED_brightness(40);
-		_delay_ms(500);
-		LED_brightness(50);
-		_delay_ms(500);
-		LED_brightness(100);
-		_delay_ms(500);
-		LED_brightness(150);
-		_delay_ms(500);
-		LED_brightness(200);
-		_delay_ms(500);
-		LED_brightness(150);
-		_delay_ms(500);
-		LED_brightness(100);
-		_delay_ms(500);
-		LED_brightness(50);
-		_delay_ms(500);
-		LED_brightness(40);
-		_delay_ms(500);
-		LED_brightness(30);
-		_delay_ms(500);
-		LED_brightness(20);
-		_delay_ms(500);
-		LED_brightness(10);
-		_delay_ms(500);
+		LED_brightness(value0,0);
+		LED_brightness(value1,1);
+
+		if(value0 == 0x01){
+			dir = 1;
+			value1 = 0x80;
+		}
+		else if(value0 == 0x80){
+			dir = 0;
+			value1 = 0x00;
+		}
+		if(value0 == 0x00){
+			value0++;
+	    }
+		if(value1 == 0x00){
+			value1++;
+		}
+		
+		if(dir){
+			value0 = value0 << 1;
+			LED_brightness(value0,0);
+			
+			value1 = value1 >> 1;
+			LED_brightness(value1,1);
+		}
+		else if(!dir){
+			value0 = value0 >> 1;
+			LED_brightness(value0, 0);
+			
+			value1 = value1 << 1;
+			LED_brightness(value1,1);
+		}
+		_delay_ms(200);
     }
 }
-

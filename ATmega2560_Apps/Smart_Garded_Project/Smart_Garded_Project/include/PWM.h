@@ -10,6 +10,6 @@
 #define PWM_H_
 
 void PWM_init (void);
-void LED_brightness(uint8_t brightness);
+void LED_brightness(uint8_t brightness, uint8_t led);
 
 #endif /* PWM_H_ */
